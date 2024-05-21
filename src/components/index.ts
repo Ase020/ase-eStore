@@ -4,3 +4,4 @@ export { default as Menu } from "./Menu";
 export { default as Navbar } from "./Navbar";
 export { default as NavIcons } from "./NavIcons";
 export { default as SearchBar } from "./SearchBar";
+export { default as Slider } from "./Slider";
