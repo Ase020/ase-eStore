@@ -6,7 +6,7 @@ function Footer() {
   const date = new Date();
   const year = date.getFullYear();
   return (
-    <footer className="container-padding bg-gray-100 text-sm py-16">
+    <footer className="container-padding bg-gray-100 text-sm py-16 mt-8 md:mt-12 lg:mt-16">
       <div className="flex flex-col md:flex-row justify-between gap-12">
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-4 lg:gap-6">
           <Link href="/">

@@ -1,10 +1,14 @@
+export { default as Add } from "./Add";
 export { default as CartModal } from "./CartModal";
 export { default as CategoryList } from "./CategoryList";
+export { default as CustomizeProduct } from "./CustomizeProduct";
+export { default as Filter } from "./Filter";
 export { default as Footer } from "./Footer";
 export { default as Menu } from "./Menu";
 export { default as Navbar } from "./Navbar";
 export { default as NavIcons } from "./NavIcons";
 export { default as ProductCard } from "./ProductCard";
+export { default as ProductImages } from "./ProductImages";
 export { default as ProductList } from "./ProductList";
 export { default as SearchBar } from "./SearchBar";
 export { default as Slider } from "./Slider";

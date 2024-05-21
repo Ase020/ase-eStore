@@ -14,8 +14,9 @@ const HomePage = () => {
         <CategoryList />
       </div>
 
-      <div className="mt-8 md:mt-12 lg:mt-16 border-red">
-        <h1 className="text-2xl container-padding">New Products</h1>
+      <div className="mt-8 md:mt-12 lg:mt-16 container-padding">
+        <h1 className="text-2xl">New Products</h1>
+        <ProductList />
       </div>
     </div>
   );

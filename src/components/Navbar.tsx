@@ -25,7 +25,7 @@ function Navbar() {
 
           <nav className="hidden xl:flex gap-4">
             <Link href="/">Home</Link>
-            <Link href="/">Shop</Link>
+            <Link href="/products">Shop</Link>
             <Link href="/">Deals</Link>
             <Link href="/">About</Link>
             <Link href="/">Contact</Link>
