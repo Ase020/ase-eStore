@@ -9,7 +9,7 @@ const HomePage = () => {
         <ProductList />
       </div>
 
-      <div className="mt-8 md:mt-12 lg:mt-16 border-red">
+      <div className="mt-8 md:mt-12 lg:mt-16">
         <h1 className="text-2xl container-padding">Categories</h1>
         <CategoryList />
       </div>
