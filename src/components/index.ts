@@ -3,5 +3,7 @@ export { default as Footer } from "./Footer";
 export { default as Menu } from "./Menu";
 export { default as Navbar } from "./Navbar";
 export { default as NavIcons } from "./NavIcons";
+export { default as ProductCard } from "./ProductCard";
+export { default as ProductList } from "./ProductList";
 export { default as SearchBar } from "./SearchBar";
 export { default as Slider } from "./Slider";
