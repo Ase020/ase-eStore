@@ -1,4 +1,4 @@
-export { default as Add } from "./Add";
+export { default as AddToCart } from "./AddToCart";
 export { default as CartModal } from "./CartModal";
 export { default as CategoryList } from "./CategoryList";
 export { default as CustomizeProduct } from "./CustomizeProduct";

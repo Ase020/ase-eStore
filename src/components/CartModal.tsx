@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 
 function CartModal() {
-  const cartItems = false;
+  const cartItems = true;
   return (
     <div className="w-max absolute p-4 rounded-md shadow-xl bg-white right-0 top-12 flex flex-col gap-6 z-20">
       <h4 className="font-semibold text-2xl text-nowrap">Shopping Cart</h4>
@@ -12,7 +12,7 @@ function CartModal() {
         <p className="text-center">Cart is empty</p>
       ) : (
         <>
-          <div className="flex flex-col gap-8 max-h-96 overflow-y-auto">
+          <div className="flex flex-col gap-8 max-h-96 overflow-y-auto scrollbar-hide">
             <CartItem />
             <CartItem />
             <CartItem />

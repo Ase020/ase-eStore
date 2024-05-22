@@ -1,4 +1,4 @@
-import { ProductImages } from "@/components";
+import { AddToCart, CustomizeProduct, ProductImages } from "@/components";
 import React from "react";
 
 function Product() {
@@ -27,6 +27,37 @@ function Product() {
         </div>
 
         <div className="h-0.5 bg-gray-100" />
+
+        <CustomizeProduct />
+        <AddToCart />
+        <div className="h-0.5 bg-gray-100" />
+
+        <div className="text-sm">
+          <h4 className="font-medium mb-4">Title</h4>
+          <p className="">
+            mountain remove vowel gently watch growth newspaper sweet minerals
+            production beat creature official writing five box taste labor
+            summer beside instance perfectly born discover
+          </p>
+        </div>
+
+        <div className="text-sm">
+          <h4 className="font-medium mb-4">Title</h4>
+          <p className="">
+            mountain remove vowel gently watch growth newspaper sweet minerals
+            production beat creature official writing five box taste labor
+            summer beside instance perfectly born discover
+          </p>
+        </div>
+
+        <div className="text-sm">
+          <h4 className="font-medium mb-4">Title</h4>
+          <p className="">
+            mountain remove vowel gently watch growth newspaper sweet minerals
+            production beat creature official writing five box taste labor
+            summer beside instance perfectly born discover
+          </p>
+        </div>
       </section>
     </main>
   );
