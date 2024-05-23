@@ -2,6 +2,7 @@
 
 import { products } from "@wix/stores";
 import React from "react";
+import AddToCart from "./AddToCart";
 
 type CustomizeProductProps = {
   productId: string;
@@ -17,6 +18,20 @@ function CustomizeProduct({
   const [selectedOptions, setselectedOptions] = React.useState<{
     [key: string]: string;
   }>({});
+  const [selectedVariant, setSelectedVariant] =
+    React.useState<products.Variant>();
+
+  React.useEffect(() => {
+    const variant = variants.find((v) => {
+      const variantChoices = v.choices;
+      if (!variantChoices) return false;
+
+      return Object.entries(selectedOptions).every(
+        ([key, value]) => variantChoices[key] === value
+      );
+    });
+    setSelectedVariant(variant);
+  }, [selectedOptions, variants]);
 
   const handleOptionsSelect = (optionType: string, choice: string) => {
     setselectedOptions((prev) => ({ ...prev, [optionType]: choice }));
@@ -98,6 +113,14 @@ function CustomizeProduct({
           </ul>
         </div>
       ))}
+
+      <AddToCart
+        productId={productId}
+        stockNumber={selectedVariant?.stock?.quantity || 0}
+        variantId={
+          selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
+        }
+      />
     </div>
   );
 }

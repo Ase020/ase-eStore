@@ -2,14 +2,19 @@
 
 import React from "react";
 
-function AddToCart() {
+interface AddToCartProps {
+  productId: string;
+  variantId: string;
+  stockNumber: number;
+}
+
+function AddToCart({ productId, variantId, stockNumber }: AddToCartProps) {
   const [quantity, setQuantity] = React.useState<number>(1);
-  const stock: number = 7;
 
   const handleQuantity = (type: "increase" | "decrease") => {
     type === "decrease"
       ? setQuantity((prev) => (prev === 0 ? 0 : prev - 1))
-      : setQuantity((prev) => (prev < stock ? prev + 1 : stock));
+      : setQuantity((prev) => (prev < stockNumber ? prev + 1 : stockNumber));
   };
 
   return (
@@ -31,18 +36,31 @@ function AddToCart() {
             <button
               type="button"
               className="text-xl disabled:cursor-not-allowed"
-              disabled={quantity >= stock}
+              disabled={quantity >= stockNumber}
               onClick={() => handleQuantity("increase")}
             >
               +
             </button>
           </div>
 
-          <p className="text-sm">
-            Only <span className="text-orange-400">{stock} items </span>
-            left! <br />
-            {"Don't"} miss it.
-          </p>
+          {stockNumber < 20 && (
+            <p className="text-sm">
+              Only{" "}
+              <span
+                className={`${
+                  stockNumber <= 5
+                    ? "text-red-400"
+                    : stockNumber <= 10
+                    ? "text-orange-400"
+                    : "text-green-400"
+                }`}
+              >
+                {stockNumber} {stockNumber > 1 ? "items" : "item"}{" "}
+              </span>
+              left! <br />
+              {"Don't"} miss it.
+            </p>
+          )}
         </div>
 
         <button
