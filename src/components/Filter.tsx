@@ -1,9 +1,22 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
 function Filter() {
-  const handleFilterChange = () => {};
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+
+  const handleFilterChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+
+    const params = new URLSearchParams(searchParams);
+    params.set(name, value);
+    replace(`${pathname}?${params.toString()}`);
+  };
 
   return (
     <section className="mt-4 md:mt-8 lg:mt-12 flex justify-between">
@@ -13,6 +26,7 @@ function Filter() {
           name="type"
           id="type"
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#ebeded] outline-none"
+          onChange={handleFilterChange}
         >
           <option>Type</option>
           <option value="physical">Physical</option>
@@ -21,7 +35,9 @@ function Filter() {
 
         {/* Min Price */}
         <input
-          type="text"
+          type="number"
+          min={0}
+          max={10_000_000}
           name="min"
           placeholder="Min price"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
@@ -30,8 +46,10 @@ function Filter() {
 
         {/* Max Price */}
         <input
-          type="text"
+          type="number"
           name="max"
+          min={0}
+          max={10_000_000}
           placeholder="Max price"
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           onChange={handleFilterChange}
@@ -39,7 +57,7 @@ function Filter() {
 
         {/* Category */}
         <select
-          name="cat"
+          name="category"
           className="py-2 px-4 rounded-2xl text-xs font-medium outline-none bg-[#EBEDED]"
           onChange={handleFilterChange}
         >

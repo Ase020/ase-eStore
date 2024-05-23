@@ -9,8 +9,6 @@ async function Products({ searchParams }: { searchParams: any }) {
     searchParams.category || "all-products"
   );
 
-  console.log("Response: ", category);
-
   return (
     <main className="container-padding">
       <div className="bg-pink-50 px-4 hidden sm:flex justify-between h-64">
@@ -36,7 +34,7 @@ async function Products({ searchParams }: { searchParams: any }) {
       <Filter />
 
       <h1 className="capitalize mt-6 md:mt-8 lg:mt-12 text-xl font-semibold">
-        Shoes For You!
+        {category?.collection?.name} For You!
       </h1>
       <Suspense fallback={<Skeleton />}>
         <ProductList

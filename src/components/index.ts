@@ -7,6 +7,7 @@ export { default as Footer } from "./Footer";
 export { default as Menu } from "./Menu";
 export { default as Navbar } from "./Navbar";
 export { default as NavIcons } from "./NavIcons";
+export { default as Pagination } from "./Pagination";
 export { default as ProductCard } from "./ProductCard";
 export { default as ProductImages } from "./ProductImages";
 export { default as ProductList } from "./ProductList";
