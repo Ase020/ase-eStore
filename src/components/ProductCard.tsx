@@ -39,7 +39,7 @@ function ProductCard({ product }: { product: products.Product }) {
       </div>
 
       {product.description && (
-        <p
+        <div
           className="text-sm text-gray-500 line-clamp-2"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(product.description),

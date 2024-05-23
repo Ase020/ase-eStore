@@ -6,13 +6,18 @@ import { products } from "@wix/stores";
 interface ProductListProps {
   categoryId: string;
   limit?: number;
+  searchParams?: any;
 }
 
-async function ProductList({ categoryId, limit }: ProductListProps) {
+async function ProductList({
+  categoryId,
+  limit = 20,
+  searchParams,
+}: ProductListProps) {
   const wixClient = await wixClientServer();
   const { items } = await wixClient.products
     .queryProducts()
-    .limit(limit || 20)
+    .limit(limit)
     .eq("collectionIds", categoryId)
     .find();
 

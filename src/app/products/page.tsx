@@ -1,8 +1,16 @@
-import { Filter, ProductList } from "@/components";
+import { Filter, ProductList, Skeleton } from "@/components";
+import { wixClientServer } from "@/lib/useWixClient";
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 
-function Products() {
+async function Products({ searchParams }: { searchParams: any }) {
+  const wixClient = await wixClientServer();
+  const category = await wixClient.collections.getCollectionBySlug(
+    searchParams.category || "all-products"
+  );
+
+  console.log("Response: ", category);
+
   return (
     <main className="container-padding">
       <div className="bg-pink-50 px-4 hidden sm:flex justify-between h-64">
@@ -30,7 +38,14 @@ function Products() {
       <h1 className="capitalize mt-6 md:mt-8 lg:mt-12 text-xl font-semibold">
         Shoes For You!
       </h1>
-      <ProductList />
+      <Suspense fallback={<Skeleton />}>
+        <ProductList
+          categoryId={
+            category.collection?._id || "00000000-000000-000000-000000000001"
+          }
+          searchParams={searchParams}
+        />
+      </Suspense>
     </main>
   );
 }
