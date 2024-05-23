@@ -1,12 +1,18 @@
-import { CategoryList, ProductList, Slider } from "@/components";
+import { CategoryList, ProductList, Skeleton, Slider } from "@/components";
+import { Suspense } from "react";
 
-const HomePage = () => {
+async function HomePage() {
   return (
     <div className="">
       <Slider />
       <div className="mt-8 md:mt-12 lg:mt-16 container-padding">
         <h1 className="text-2xl">Featured Products</h1>
-        <ProductList />
+        <Suspense fallback={<Skeleton />}>
+          <ProductList
+            categoryId={process.env.WIX_FEATURED_PRODUCTS_CATEGORY_ID!}
+            limit={4}
+          />
+        </Suspense>
       </div>
 
       <div className="mt-8 md:mt-12 lg:mt-16">
@@ -16,10 +22,10 @@ const HomePage = () => {
 
       <div className="mt-8 md:mt-12 lg:mt-16 container-padding">
         <h1 className="text-2xl">New Products</h1>
-        <ProductList />
+        <ProductList categoryId="0d2fc409-2f29-433e-82c4-044191d62561" />
       </div>
     </div>
   );
-};
+}
 
 export default HomePage;

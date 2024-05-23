@@ -1,39 +1,51 @@
+import { products } from "@wix/stores";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import DOMPurify from "isomorphic-dompurify";
 
-function ProductCard() {
+function ProductCard({ product }: { product: products.Product }) {
   return (
     <div className="w-full flex flex-col gap-2">
-      <Link className="relative w-full h-80" href={`/products/1`}>
+      <Link className="relative w-full h-80" href={`/products/${product.slug}`}>
         <Image
-          src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt=""
+          src={product.media?.mainMedia?.image?.url || "/product.png"}
+          alt={product.media?.mainMedia?.title!}
           fill
           sizes="25vw"
           className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity ease-in-out duration-500"
         />
-        <Image
-          src="https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt=""
-          fill
-          sizes="25vw"
-          className="absolute object-cover rounded-md"
-        />
+        {product.media?.items && (
+          <Image
+            src={product.media?.items[1]?.image?.url!}
+            alt={product.media?.mainMedia?.title!}
+            fill
+            sizes="25vw"
+            className="absolute object-cover rounded-md"
+          />
+        )}
       </Link>
 
       <div className="flex justify-between mt-1">
-        <Link href={`/products/1`} className="font-medium">
-          Product Name
+        <Link
+          href={`/products/${product.slug}`}
+          className="font-medium line-clamp-1"
+        >
+          {product.name}
         </Link>
-        <span className="font-semibold">Ksh 850</span>
+        <span className="font-semibold text-nowrap">
+          {product.price?.currency} {product.price?.discountedPrice}
+        </span>
       </div>
 
-      <p className="text-sm text-gray-500 line-clamp-2">
-        river needs please hall or slipped southern fall born whose determine
-        clean anything ago bigger branch house coat brain control although black
-        eleven lost
-      </p>
+      {product.description && (
+        <p
+          className="text-sm text-gray-500 line-clamp-2"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(product.description),
+          }}
+        />
+      )}
 
       <button
         type="button"

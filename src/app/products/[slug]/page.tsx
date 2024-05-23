@@ -3,14 +3,14 @@ import React from "react";
 
 function Product() {
   return (
-    <main className="container-padding border-red flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-16">
+    <main className="container-padding flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-16">
       {/* Image */}
       <section className="w-full lg:w-1/2 lg:sticky top-20 h-max">
         <ProductImages />
       </section>
 
       {/* Description */}
-      <section className="w-full lg:w-1/2 flex flex-col gap-6 border-red">
+      <section className="w-full lg:w-1/2 flex flex-col gap-6">
         <h1 className="text-4xl font-medium">Product Name</h1>
 
         <p className="text-gray-500">

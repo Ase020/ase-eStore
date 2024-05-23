@@ -11,4 +11,5 @@ export { default as ProductCard } from "./ProductCard";
 export { default as ProductImages } from "./ProductImages";
 export { default as ProductList } from "./ProductList";
 export { default as SearchBar } from "./SearchBar";
+export { default as Skeleton } from "./Skeleton";
 export { default as Slider } from "./Slider";

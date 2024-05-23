@@ -104,6 +104,7 @@ const Slide = ({ slide, current, setCurrent }: SlideProps) => {
           src={slide.img}
           alt={slide.title}
           fill
+          priority
           sizes="100%"
           className="object-cover"
         />
