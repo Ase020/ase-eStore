@@ -43,23 +43,27 @@ function AddToCart({ productId, variantId, stockNumber }: AddToCartProps) {
             </button>
           </div>
 
-          {stockNumber < 20 && (
-            <p className="text-sm">
-              Only{" "}
-              <span
-                className={`${
-                  stockNumber <= 5
-                    ? "text-red-400"
-                    : stockNumber <= 10
-                    ? "text-orange-400"
-                    : "text-green-400"
-                }`}
-              >
-                {stockNumber} {stockNumber > 1 ? "items" : "item"}{" "}
-              </span>
-              left! <br />
-              {"Don't"} miss it.
-            </p>
+          {stockNumber < 1 ? (
+            <p className="text-xs text-red-400">Product is out stock!</p>
+          ) : (
+            stockNumber < 20 && (
+              <p className="text-sm">
+                Only{" "}
+                <span
+                  className={`${
+                    stockNumber <= 5
+                      ? "text-red-400"
+                      : stockNumber <= 10
+                      ? "text-orange-400"
+                      : "text-green-400"
+                  }`}
+                >
+                  {stockNumber} {stockNumber > 1 ? "items" : "item"}{" "}
+                </span>
+                left! <br />
+                {"Don't"} miss it.
+              </p>
+            )
           )}
         </div>
 
